@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 
 import datetime
+import emails
 import os
 import re
 import reports
-
-desc_dir = os.path.join("supplier-data", "descriptions")
-text_file_name_pattern = r"([0-9]+).txt$"
 
 
 def process_text_file(text_file):
@@ -36,6 +34,8 @@ def make_summary():
     :return: Summary from all of descriptions
     """
     summary = ""
+    desc_dir = os.path.join("supplier-data", "descriptions")
+    text_file_name_pattern = r"([0-9]+).txt$"
 
     for file in os.listdir(desc_dir):
         try:
@@ -56,6 +56,7 @@ def make_summary():
 
 
 def main():
+    """Generate PDF and send email"""
     file_name = "processed.pdf"
 
     # TODO: Choose OS
@@ -71,12 +72,23 @@ def main():
 
     pdf_file_path = os.path.join(pdf_dest_dir, file_name)
 
-    # Generate PDF title
+    # Generate PDF
     today = datetime.datetime.today()
     title = "Processed Update on {}".format(today.strftime("%B %d, %Y"))
     summary = make_summary()
 
     reports.generate_report(pdf_file_path, title, summary)
+
+    # Generate email
+    # TODO: Change recipient
+    sender = "automation@example.com"
+    recipient = "[user]@example.com"
+    subject = "Upload Completed - Online Fruit Store"
+    body = "All fruits are uploaded to our website successfully. A detailed list is attached to this email."
+
+    message = emails.generate_email(sender, recipient, subject, body, pdf_file_path)
+    # Send email
+    emails.send_email(message)
 
 
 if __name__ == '__main__':
