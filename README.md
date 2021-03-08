@@ -67,6 +67,6 @@ This script will:
 5. Email the report
 
 To make sure this script run, follow the steps below: 
-1. Type `sudo apt install stress` to install stress to you computer.
-2. Type `stress --cpu 8` to make your CPU more stress (even if your CPU is already tired jk)
-3. Type `./health_check.py` in other cmd to run the script and you will receive email because your CPU is stress. Please go to psychiatrist.
+1. Type `sudo apt install stress` to install stress to ~~you~~, I mean your computer.
+2. Type `stress --cpu 8` to make your CPU more stress ~~(even if your CPU is already tired jk)~~
+3. Type `./health_check.py` in other cmd to run the script and you will receive email because your CPU is stress. ~~Please go to psychiatrist.~~
