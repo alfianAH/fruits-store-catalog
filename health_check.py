@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 
+import emails
 import psutil
 import shutil
 import socket
+
+# TODO: Change recipient
+sender = "automation@example.com"
+recipient = "username@example.com"
+body = "Please check your system and resolve the issue as soon as possible."
 
 
 def check_cpu():
@@ -11,7 +17,9 @@ def check_cpu():
     """
     cpu_usage = psutil.cpu_percent(1)
     if cpu_usage > 80:
-        print("Report")
+        subject = "Error - CPU usage is over 80%"
+
+        emails.generate_error_email(sender, recipient, subject, body)
 
 
 def check_disk_space(disk):
@@ -21,7 +29,9 @@ def check_disk_space(disk):
     available_disk_space = shutil.disk_usage(disk)
     free_space = available_disk_space.free / available_disk_space.total * 100
     if free_space < 20:
-        print("Report")
+        subject = "Error - Available disk space is less than 20%"
+
+        emails.generate_error_email(sender, recipient, subject, body)
 
 
 def check_memory():
@@ -32,7 +42,9 @@ def check_memory():
     limit = 500 * 1024 * 1024  # 500 MB
 
     if available_memory.available < limit:
-        print("Error")
+        subject = "Error - Available memory is less than 500MB"
+
+        emails.generate_error_email(sender, recipient, subject, body)
 
 
 def check_localhost():
@@ -42,7 +54,9 @@ def check_localhost():
     localhost = socket.gethostbyname('localhost')
 
     if localhost != '127.0.0.1':
-        print("Report")
+        subject = "Error - localhost cannot be resolved to 127.0.0.1"
+
+        emails.generate_error_email(sender, recipient, subject, body)
 
 
 def main():

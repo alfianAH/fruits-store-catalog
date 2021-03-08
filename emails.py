@@ -29,6 +29,18 @@ def generate_email(sender, recipient, subject, body, attachment_path):
     return message
 
 
+def generate_error_email(sender, recipient, subject, body):
+    """Creates an error email"""
+    # Basic Email formatting
+    message = email.message.EmailMessage()
+    message["From"] = sender
+    message["To"] = recipient
+    message["Subject"] = subject
+    message.set_content(body)
+
+    return message
+
+
 def send_email(message):
     """Sends the message to the configured SMTP server."""
     mail_server = smtplib.SMTP('localhost')
