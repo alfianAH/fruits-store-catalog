@@ -1,3 +1,5 @@
+# Exclude output files in project
+supplier-data/images/*.jpeg
 
 # Created by https://www.toptal.com/developers/gitignore/api/pycharm,pycharm+all,pycharm+iml
 # Edit at https://www.toptal.com/developers/gitignore?templates=pycharm,pycharm+all,pycharm+iml
