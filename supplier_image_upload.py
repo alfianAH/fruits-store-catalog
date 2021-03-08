@@ -17,7 +17,7 @@ def upload_converted_images(image_file):
         req = requests.post(url, files={'file': opened_image})
 
         # Give output when success
-        if req.status_code == 200:
+        if req.ok:
             print("Successfully upload {} to {}".format(opened_image, url))
 
         # Raise error when POST is not successful
