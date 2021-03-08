@@ -3,17 +3,16 @@
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
 
-filename = "processed.pdf"
 
-
-def generate(title, body):
+def generate_report(attachment, title, body):
     """Generate PDF
+    :param attachment: File path
     :param title: Title of the fi;e
     :param body: Body of the file
     :return:
     """
     styles = getSampleStyleSheet()
-    report = SimpleDocTemplate(filename)
+    report = SimpleDocTemplate(attachment)
     # Add title and body
     report_title = Paragraph(title, styles["h1"])
     report_body = Paragraph(body, styles["BodyText"])
