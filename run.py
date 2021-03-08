@@ -43,8 +43,22 @@ def make_json_object(text_file, text_file_name):
     return json_dict
 
 
-def upload_to_web():
-    pass
+def upload_to_web(desc_dict):
+    """POST descriptions JSON to website
+
+    :param desc_dict: description dictionary
+    :return:
+    """
+
+    # POST desc_dict to url
+    req = requests.post(url, data=desc_dict)
+
+    # Give output when the request is okay
+    if req.ok:
+        print("Successfully upload JSON to {}".format(url))
+
+    # Raise error when the request is not okay
+    req.raise_for_status()
 
 
 def main():
@@ -60,7 +74,10 @@ def main():
             # If there is the result, ...
             if result:
                 file_path = os.path.join(desc_dir, file)
-                print(make_json_object(file_path, text_file_name))
+                # Make JSON object
+                json_obj = make_json_object(file_path, text_file_name)
+                # Upload json_obj to website
+                upload_to_web(json_obj)
         except AttributeError:
             continue
 
