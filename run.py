@@ -5,7 +5,7 @@ import re
 import requests
 
 # TODO: Change [linux-instance-external-IP]
-url = "http://[linux-instance-external-IP]/fruits"
+url = "http://34.122.71.95/fruits/"
 desc_dir = os.path.join("supplier-data", "descriptions")
 text_file_name_pattern = r"([0-9]+).txt$"
 

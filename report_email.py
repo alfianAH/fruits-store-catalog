@@ -61,10 +61,10 @@ def main():
 
     # TODO: Choose OS
     # For Windows
-    pdf_dest_dir = os.path.join(os.path.abspath("/"), os.getcwd(), "tmp")
+    # pdf_dest_dir = os.path.join(os.path.abspath("/"), os.getcwd(), "tmp")
 
     # For Linux
-    # pdf_dest_dir = os.path.join(os.path.abspath("/"), "tmp")
+    pdf_dest_dir = os.path.join(os.path.abspath("/"), "tmp")
 
     # Make destination directory
     if not os.path.exists(pdf_dest_dir):
@@ -82,7 +82,7 @@ def main():
     # Generate email
     # TODO: Change recipient
     sender = "automation@example.com"
-    recipient = "[user]@example.com"
+    recipient = "student-01-fb49a5a2b556@example.com"
     subject = "Upload Completed - Online Fruit Store"
     body = "All fruits are uploaded to our website successfully. A detailed list is attached to this email."
 

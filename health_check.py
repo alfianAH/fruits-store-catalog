@@ -7,7 +7,7 @@ import socket
 
 # TODO: Change recipient
 sender = "automation@example.com"
-recipient = "username@example.com"
+recipient = "student-01-fb49a5a2b556@example.com"
 body = "Please check your system and resolve the issue as soon as possible."
 
 
@@ -16,10 +16,12 @@ def check_cpu():
     If CPU usage is over than 80%, report and send an email
     """
     cpu_usage = psutil.cpu_percent(1)
+
     if cpu_usage > 80:
         subject = "Error - CPU usage is over 80%"
 
-        emails.generate_error_email(sender, recipient, subject, body)
+        message = emails.generate_error_email(sender, recipient, subject, body)
+        emails.send_email(message)
 
 
 def check_disk_space(disk):
@@ -31,7 +33,8 @@ def check_disk_space(disk):
     if free_space < 20:
         subject = "Error - Available disk space is less than 20%"
 
-        emails.generate_error_email(sender, recipient, subject, body)
+        message = emails.generate_error_email(sender, recipient, subject, body)
+        emails.send_email(message)
 
 
 def check_memory():
@@ -44,7 +47,8 @@ def check_memory():
     if available_memory.available < limit:
         subject = "Error - Available memory is less than 500MB"
 
-        emails.generate_error_email(sender, recipient, subject, body)
+        message = emails.generate_error_email(sender, recipient, subject, body)
+        emails.send_email(message)
 
 
 def check_localhost():
@@ -56,7 +60,8 @@ def check_localhost():
     if localhost != '127.0.0.1':
         subject = "Error - localhost cannot be resolved to 127.0.0.1"
 
-        emails.generate_error_email(sender, recipient, subject, body)
+        message = emails.generate_error_email(sender, recipient, subject, body)
+        emails.send_email(message)
 
 
 def main():

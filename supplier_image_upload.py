@@ -6,7 +6,7 @@ import requests
 
 
 # TODO: Change [linux-instance-IP-Address]
-url = "http://[linux-instance-IP-Address]/media/images/"
+url = "http://34.122.71.95/upload/"
 image_name_pattern = r"([0-9]+).jpeg$"
 images_dir = os.path.join("supplier-data", "images")
 
